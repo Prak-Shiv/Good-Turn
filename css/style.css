@@ -178,7 +178,7 @@ h6,
     height: 10px;
     top: 0;
     left: 0;
-    background:#d5f6ca;
+    background:#ffffff;
     z-index: 1;
 }
 
@@ -187,7 +187,7 @@ h6,
     height: 19px;
     top: auto;
     bottom: 0;
-    background:#cdeec2;
+    background:#ffffff;
 }
 
 @media (max-width: 768px) {

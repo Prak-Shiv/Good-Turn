@@ -29,6 +29,29 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        /* CSS to make the fullImageContainer cover the entire screen */
+        #fullImageContainer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 9999; /* Ensure it's on top of other elements */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* CSS to make the fullImage cover the entire screen */
+        #fullImage {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 10px; /* Add border radius if needed */
+        }
+        </style>
 </head>
 
 <body>
@@ -207,23 +230,24 @@
         <!-- Testimonial Start -->
         <div class="container-xxl py-5">
             <div class="container">
+
                 <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                     <h1 class="mb-3">Our Clients Say!</h1>
-                    <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
+                    <p>Explore firsthand experiences from satisfied clients, showcasing the quality and effectiveness of our work. From glowing reviews to personal success stories.</p>
                 </div>
                 <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
                     <div class="testimonial-item bg-light rounded p-5">
-                        <p class="fs-5">Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet dolor amet diam stet. Est stet ea lorem amet est kasd kasd erat eos</p>
+                        <p class="fs-5">Click the image</p>
                         <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-1.jpg" style="width: 90px; height: 90px;">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-1.jpg" style="width: 90px; height: 90px;" onclick="toggleFullImage()">
                             <div class="ps-3">
-                                <h3 class="mb-1">Client Name</h3>
-                                <span>Profession</span>
+                                <h3 class="mb-1">Dr.K.Meenakshi</h3>
+                                <span>Professor</span>
                             </div>
                             <i class="fa fa-quote-right fa-3x text-primary ms-auto d-none d-sm-flex"></i>
                         </div>
-                    </div>
-                    <div class="testimonial-item bg-light rounded p-5">
+                    </div>                  
+                    <!--div class="testimonial-item bg-light rounded p-5">
                         <p class="fs-5">Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet dolor amet diam stet. Est stet ea lorem amet est kasd kasd erat eos</p>
                         <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
                             <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-2.jpg" style="width: 90px; height: 90px;">
@@ -244,8 +268,8 @@
                             </div>
                             <i class="fa fa-quote-right fa-3x text-primary ms-auto d-none d-sm-flex"></i>
                         </div>
-                    </div>
-                </div>
+                    </div-->
+                </div>  
             </div>
         </div>
         <!-- Testimonial End -->
@@ -257,9 +281,10 @@
                 <div class="row g-5">
                     <div class="col-lg-3 col-md-6">
                         <h3 class="text-white mb-4">Get In Touch</h3>
-                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Kamaraj Nagar, Avadi,Chennai,Tamilnadu,India -600071</p>
-                        <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+91 9360738853</p>
-                        <p class="mb-2"><i class="fa fa-envelope me-3"></i>helping@editorsunicornquest.info</p>
+                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>No 59, Ambedkar Street, Poonamalle byepass, Thiruvalluvar,Tamilnadu,India -602001</p>
+                        <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+91 93424 16443 </p>
+                        <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+91 81222 35204 </p>
+                        <p class="mb-2"><i class="fa fa-envelope me-3"></i>helping@editorsunicornquest.info    unicornquestofficial@gmil.com</p>
                         <div class="d-flex pt-2">
                             <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
                             <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
@@ -335,6 +360,9 @@
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
+    <div id="fullImageContainer" class="position-fixed w-100 h-100 top-0 start-0 d-none justify-content-center align-items-center" style="background-color: rgba(0, 0, 0, 0.8);" onclick="closeFullImage()">
+        <img id="fullImage" class="img-fluid rounded" src="img/testimonial-1.jpg" style="max-width: 90%; max-height: 90%;" onclick="toggleFullImage()">
+    </div>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -346,6 +374,29 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+
+<script>
+    function toggleFullImage() {
+        var fullImageContainer = document.getElementById("fullImageContainer");
+        var fullImage = document.getElementById("fullImage");
+    
+        // Toggle the 'd-none' class to show/hide the full image
+        if (fullImageContainer.classList.contains("d-none")) {
+            fullImageContainer.classList.remove("d-none");
+            // Set the src attribute of the full image
+            //fullImage.src = "img/fullimage.jpg"; // Replace with the path to your full image
+        } else {
+            fullImageContainer.classList.add("d-none");
+        }
+    }
+    
+    // Function to close full image when clicking on the overlay background
+    function closeFullImage() {
+        var fullImageContainer = document.getElementById("fullImageContainer");
+        fullImageContainer.classList.add("d-none");
+    }
+    </script>
 </body>
 
 </html>
